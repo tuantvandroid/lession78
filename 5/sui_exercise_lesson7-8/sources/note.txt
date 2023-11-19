@@ -1,0 +1,54 @@
+struct Hero has key, store {
+        id: UID,
+        hp: u64,
+        mana: u64,
+        level: u8,
+        experience: u64,
+        sword: Option<Sword>,
+        game_id: ID,
+    }
+
+    struct Sword has key, store {
+        id: UID,
+        magic: u64,
+        strength: u64,
+        game_id: ID,
+    }
+
+    struct Potion has key, store {
+        id: UID,
+        potency: u64,
+        game_id: ID,
+    }
+
+    struct Armor has key,store {
+        id: UID,
+        guard: u64,
+        game_id: ID,
+    }
+
+    struct Monter has key {
+        id: UID,
+        hp: u64,
+        strength: u64,
+        game_id: ID,
+    }
+
+    struct GameInfo has key {
+        id: UID,
+        admin: address
+    }
+
+    struct GameAdmin has key {
+        id: UID,
+        monter_created: u64,
+        potions_created: u64,
+        game_id: ID,
+    }
+
+    struct MonterSlainEvent has copy, drop {
+        slayer_address: address,
+        hero: ID,
+        monter: ID,
+        game_id: ID,
+    }
